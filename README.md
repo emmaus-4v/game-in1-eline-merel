@@ -1,29 +1,31 @@
 Deze game is gebaseerd op het template voor 4HV van het Emmauscollege Rotterdam
 
-## Mijn spel: *naam van het spel*
+## Mijn spel: ......
 Gemaakt door:
-- *naam van leerling 1*
-- *naam van leerling 2*
+- Eline van de Weg
+- Merel te Braake
 
 ## Mijn planning
 
 Basis: uitleg, spelen, afgaan en punten
 - [x] maak index.html, style.css en script.js met canvas
-- [ ] teken speler
-- [ ] beweeg speler
-- [ ] ... *(vul zelf aan)*
+- [ ] teken hamburger
+- [ ] beweeg hambruger
+- [ ] open mond hamburger
+- [ ] teken eten
+- [ ] beweeg eten
 - [ ] punten op scherm zetten
 - [ ] punten kunnen scoren
 - [ ] uitlegscherm
 
-Uitbreiding: *bedenk iets, bijvoorbeeld meer tegenstanders*
-- [ ] *later uitwerken*
-- [ ] *later uitwerken*
-- [ ] *later uitwerken*
+Uitbreiding: 
+- [ ] teken bommen
+- [ ] beweeg bommen
+- [ ] af gaan als je bom oppakt
 
 Uitbreiding: *bedenk iets, bijvoorbeeld bewegende achtergrond*
-- [ ] *later uitwerken*
-- [ ] *later uitwerken*
+- [ ] achtergrond maken
+- [ ] andere thema's
 - [ ] *later uitwerken*
 
 ## Credits
