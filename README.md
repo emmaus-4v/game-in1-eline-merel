@@ -17,8 +17,8 @@ Basis: uitleg, spelen, afgaan en punten
 - [ ] maak functie die kijkt of eten bij burger is als mond open is
 - [ ] punten op scherm zetten
 - [ ] geef punt voor elke gevangen eten met mond open
-- [ ] maak functie die kijkt of eten bij burger is als mond dicht is
-- ... hoe ga ik af
+- [ ] functie maken dat als je het eten mist
+- [ ] afgaan bij meerdere keren gemist eten (3)
 - [ ] uitlegscherm
 
 Uitbreiding: 
