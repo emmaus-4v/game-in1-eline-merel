@@ -14,8 +14,11 @@ Basis: uitleg, spelen, afgaan en punten
 - [ ] open mond hamburger
 - [ ] teken eten
 - [ ] beweeg eten
+- [ ] maak functie die kijkt of eten bij burger is als mond open is
 - [ ] punten op scherm zetten
-- [ ] punten kunnen scoren
+- [ ] geef punt voor elke gevangen eten met mond open
+- [ ] maak functie die kijkt of eten bij burger is als mond dicht is
+- ... hoe ga ik af
 - [ ] uitlegscherm
 
 Uitbreiding: 
