@@ -2,8 +2,7 @@ Deze game is gebaseerd op het template voor 4HV van het Emmauscollege Rotterdam
 
 ## Mijn spel: ......
 Gemaakt door:
-- Eline van de Weg uit 4VE
-- Merel te Braake uit 4VA
+- Eline van de Weg uit 4VE (780 bij 1220)
 
 ## Mijn planning
 
