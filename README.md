@@ -2,23 +2,24 @@ Deze game is gebaseerd op het template voor 4HV van het Emmauscollege Rotterdam
 
 ## Mijn spel: ......
 Gemaakt door:
-- Eline van de Weg uit 4VE (780 bij 1220)
+- Eline van de Weg uit 4VE (720 bij 1280)
 
 ## Mijn planning
 
 Basis: uitleg, spelen, afgaan en punten
 - [x] maak index.html, style.css en script.js met canvas
-- [ ] teken hamburger
-- [ ] beweeg hambruger
-- [ ] open mond hamburger
+- [(x)] teken hamburger
+- [x] beweeg hambruger
+- [ ] (open mond hamburger)
+- [ ] achtergrond maken
 - [ ] teken eten
 - [ ] beweeg eten
 - [ ] maak functie die kijkt of eten bij burger is als mond open is
 - [ ] punten op scherm zetten
 - [ ] geef punt voor elke gevangen eten met mond open
-- [ ] functie maken dat als je het eten mist
+- [ ] functie maken voor als je het eten mist
 - [ ] afgaan bij meerdere keren gemist eten (3)
-- [ ] uitlegscherm
+- [ ] uitlegscherm (op play kunnen klikken)
 
 Uitbreiding: 
 - [ ] teken bommen
@@ -26,7 +27,6 @@ Uitbreiding:
 - [ ] af gaan als je bom oppakt
 
 Uitbreiding: *bedenk iets, bijvoorbeeld bewegende achtergrond*
-- [ ] achtergrond maken
 - [ ] andere thema's
 - [ ] *later uitwerken*
 

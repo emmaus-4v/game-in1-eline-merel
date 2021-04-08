@@ -20,6 +20,9 @@
 const UITLEG = 0;
 const SPELEN = 1;
 const GAMEOVER = 2;
+const keyA = 65;
+const keyD = 68;
+
 var spelStatus = SPELEN;
 
 var spelerX = 200; // x-positie van speler
@@ -42,14 +45,10 @@ var score = 0; // aantal behaalde punten
 /* ********************************************* */
 
 
-/**
- * Tekent het speelveld
- */
-var tekenVeld = function () {
-  fill("blue");
-  rect(20, 20, width - 2 * 20, height - 2 * 20);
+var  tekenVeld = function() {
+    fill(250, 100, 250);
+    rect(0, 0, 1280, 360);
 };
-
 
 /**
  * Tekent de vijand
@@ -85,7 +84,7 @@ var tekenSpeler = function(spelerX, spelerY) {
 
 
 /**
- * Updatet globale variabelen met positie van vijand of tegenspeler
+ * Updatet globale variabelen met positie van bom
  */
 var beweegBom = function() {
     
@@ -93,7 +92,7 @@ var beweegBom = function() {
 
 
 /**
- * Updatet globale variabelen met positie van kogel of bal
+ * Updatet globale variabelen met positie van eten
  */
 var beweegEten = function() {
 
@@ -105,33 +104,38 @@ var beweegEten = function() {
  * Updatet globale variabele spelerX en spelerY
  */
 var beweegSpeler = function() {
-    var keyA = 65;
-    var keyD = 68;
   if (keyIsDown(keyA)) {
-      spelerX -= 1;
+      spelerX -= 5;
   }
-  else if (keyIsDown(keyD)) {
-      spelerX += 1;
+  if (keyIsDown(keyD)) {
+      spelerX += 5;
+  }
+
+  if(spelerX < 0) {
+      spelerX =0;
+  }
+  if(spelerX > 1280) {
+    spelerX = 1280;
   }
 };
 
 
 /**
- * Zoekt uit of de vijand is geraakt
- * @returns {boolean} true als vijand is geraakt
+ * Zoekt uit of de speler heeft gemist
+ * @returns {boolean} true als speler heeft gemist
  */
-var checkVijandGeraakt = function() {
+var checkSpelerGemist = function() {
 
   return false;
 };
 
 
+
 /**
- * Zoekt uit of de speler is geraakt
- * bijvoorbeeld door botsing met vijand
- * @returns {boolean} true als speler is geraakt
+ * Zoekt uit of de speler bom gepakt
+ * @returns {boolean} true als speler bom heeft gepakt
  */
-var checkSpelerGeraakt = function() {
+var checkSpelerBomGepakt = function() {
     
   return false;
 };
@@ -173,14 +177,13 @@ function draw() {
       beweegEten();
       beweegSpeler();
       
-      if (checkVijandGeraakt()) {
-        // punten erbij
-        // nieuwe vijand maken
+      if (checkSpelerGemist()) {
+        // leven eraf
       }
       
-      if (checkSpelerGeraakt()) {
-        // leven eraf of gezondheid verlagen
-        // eventueel: nieuwe speler maken
+      if (checkSpelerBomGepakt()) {
+        // meteen af
+        
       }
 
       tekenVeld();
