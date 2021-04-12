@@ -11,7 +11,7 @@ Basis: uitleg, spelen, afgaan en punten
 - [(x)] teken hamburger
 - [x] beweeg hambruger
 - [ ] (open mond hamburger)
-- [ ] achtergrond maken
+- [x] achtergrond maken
 - [ ] teken eten
 - [ ] beweeg eten
 - [ ] maak functie die kijkt of eten bij burger is als mond open is

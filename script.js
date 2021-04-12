@@ -28,8 +28,8 @@ var spelStatus = SPELEN;
 var spelerX = 200; // x-positie van speler
 var spelerY = 680; // y-positie van speler
 
-var etenX = 0;    // x-positie van kogel
-var etenY = 0;    // y-positie van kogel
+var etenX = random(0, 1220);    // x-positie van eten
+var etenY = 0;    // y-positie van eten
 
 var bomX = 0;   // x-positie van vijand
 var bomY = 0;   // y-positie van vijand
@@ -46,8 +46,10 @@ var score = 0; // aantal behaalde punten
 
 
 var  tekenVeld = function() {
-    fill(250, 100, 250);
-    rect(0, 0, 1280, 360);
+    fill("lightblue");
+    rect(0, 0, 1280, 540);
+    fill("lime");
+    rect(0, 540, 1280, 720);
 };
 
 /**
@@ -67,8 +69,8 @@ var tekenBom = function(x, y) {
  * @param {number} y y-coördinaat
  */
 var tekenEten = function(x, y) {
-
-
+    fill("pink");
+    ellipse(etenX, etenY, 50, 50);
 };
 
 
@@ -104,15 +106,16 @@ var beweegEten = function() {
  * Updatet globale variabele spelerX en spelerY
  */
 var beweegSpeler = function() {
+    tekenVeld();
   if (keyIsDown(keyA)) {
-      spelerX -= 5;
+      spelerX -= 7;
   }
   if (keyIsDown(keyD)) {
-      spelerX += 5;
+      spelerX += 7;
   }
 
   if(spelerX < 0) {
-      spelerX =0;
+    spelerX =0;
   }
   if(spelerX > 1280) {
     spelerX = 1280;
