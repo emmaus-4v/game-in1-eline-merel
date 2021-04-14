@@ -45,15 +45,15 @@ var score = 0; // aantal behaalde punten
 /* ********************************************* */
 
 
-var  tekenVeld = function() {
-    fill("lightblue");
+var tekenVeld = function() {
+    fill('lightblue');
     rect(0, 0, 1280, 540);
-    fill("lime");
+    fill('lime');
     rect(0, 540, 1280, 720);
 };
 
 /**
- * Tekent de vijand
+ * Tekent de bom
  * @param {number} x x-coördinaat
  * @param {number} y y-coördinaat
  */
@@ -64,11 +64,11 @@ var tekenBom = function(x, y) {
 
 
 /**
- * Tekent de kogel of de bal
- * @param {number} x x-coördinaat
- * @param {number} y y-coördinaat
+ * Tekent de eten
+ * @param {number} etenX x-coördinaat
+ * @param {number} etenY y-coördinaat
  */
-var tekenEten = function(x, y) {
+var tekenEten = function(etenX, etenY) {
     fill("pink");
     ellipse(etenX, etenY, 50, 50);
 };
@@ -97,7 +97,8 @@ var beweegBom = function() {
  * Updatet globale variabelen met positie van eten
  */
 var beweegEten = function() {
-
+    tekenEten(etenX, etenY);
+    etenY += 10;
 };
 
 
