@@ -28,7 +28,7 @@ var spelStatus = SPELEN;
 var spelerX = 200; // x-positie van speler
 var spelerY = 680; // y-positie van speler
 
-var etenX = random(0, 1220);    // x-positie van eten
+var etenX = 0;    // x-positie van eten
 var etenY = 0;    // y-positie van eten
 
 var bomX = 0;   // x-positie van vijand
@@ -99,6 +99,11 @@ var beweegBom = function() {
 var beweegEten = function() {
     tekenEten(etenX, etenY);
     etenY += 10;
+
+    if (etenY > 780) {
+        etenX = random(0, 1220);
+        etenY = 0;
+    }
 };
 
 
@@ -166,6 +171,8 @@ function setup() {
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
   background('blue');
+
+
 }
 
 
