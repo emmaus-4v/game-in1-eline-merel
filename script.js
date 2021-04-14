@@ -98,7 +98,7 @@ var beweegBom = function() {
  */
 var beweegEten = function() {
     tekenEten(etenX, etenY);
-    etenY += 10;
+    etenY += 5;
 
     if (etenY > 780) {
         etenX = random(0, 1220);
