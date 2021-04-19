@@ -35,6 +35,7 @@ var bomX = 0;   // x-positie van vijand
 var bomY = 0;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
+var snelheidEten= 5; //snelheid van het eten
 
 
 
@@ -50,6 +51,9 @@ var tekenVeld = function() {
     rect(0, 0, 1280, 540);
     fill('lime');
     rect(0, 540, 1280, 720);
+    fill('black');
+    textSize(80);
+    text(score, 0, 10, 500, 500);
 };
 
 /**
@@ -98,12 +102,19 @@ var beweegBom = function() {
  */
 var beweegEten = function() {
     tekenEten(etenX, etenY);
-    etenY += 5;
-
+    var i = 1; //veranderd de snelheid na bepaald aantal punten
+    etenY += snelheidEten * i;
+    
     if (etenY > 780) {
         etenX = random(0, 1220);
         etenY = 0;
     }
+
+    if (score + 1) {
+        i += 0.05;
+    }
+
+    
 };
 
 
@@ -129,6 +140,8 @@ var beweegSpeler = function() {
 };
 
 
+
+
 /**
  * Zoekt uit of de speler heeft gemist
  * @returns {boolean} true als speler heeft gemist
@@ -138,7 +151,16 @@ var checkSpelerGemist = function() {
   return false;
 };
 
-
+/**
+ * Zoekt uit of de speler eten gepakt
+ * @returns {boolean} true als speler eten heeft gepakt
+ */
+var checkSpelerEtenGepakt = function() {
+    if(spelerX === etenX && spelerY === etenY) {
+        score += 1;
+    }
+  return false;
+};
 
 /**
  * Zoekt uit of de speler bom gepakt
@@ -191,7 +213,11 @@ function draw() {
       if (checkSpelerGemist()) {
         // leven eraf
       }
-      
+
+      if (checkSpelerEtenGepakt()) {
+        // meteen af
+        
+      }
       if (checkSpelerBomGepakt()) {
         // meteen af
         
