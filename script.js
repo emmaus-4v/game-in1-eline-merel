@@ -45,15 +45,22 @@ var snelheidEten= 5; //snelheid van het eten
 /*      functies die je gebruikt in je game      */
 /* ********************************************* */
 
-
 var tekenVeld = function() {
+    strokeWeight(1);
     fill('lightblue');
     rect(0, 0, 1280, 540);
     fill('lime');
     rect(0, 540, 1280, 720);
+
     fill('black');
     textSize(80);
     text(score, 0, 10, 500, 500);
+
+    strokeWeight(5);
+    color('white');
+    tekenKruis(1000, 100);
+    tekenKruis(1070, 100);
+    tekenKruis(1140, 100);
 };
 
 /**
@@ -66,6 +73,10 @@ var tekenBom = function(x, y) {
 
 };
 
+var tekenKruis = function(x, y) {
+    line(x, y, x - 50, y - 50);
+    line(x - 50, y, x , y - 50);
+};
 
 /**
  * Tekent de eten
@@ -73,6 +84,7 @@ var tekenBom = function(x, y) {
  * @param {number} etenY y-coördinaat
  */
 var tekenEten = function(etenX, etenY) {
+    strokeWeight(1);
     fill("pink");
     ellipse(etenX, etenY, 50, 50);
 };
@@ -84,6 +96,7 @@ var tekenEten = function(etenX, etenY) {
  * @param {number} spelerY y-coördinaat
  */
 var tekenSpeler = function(spelerX, spelerY) {
+  strokeWeight(1);
   fill("white");
   rect(spelerX, spelerY, 50, 50);
 };
@@ -131,11 +144,11 @@ var beweegSpeler = function() {
       spelerX += 7;
   }
 
-  if(spelerX < 0) {
+  if (spelerX < 0) {
     spelerX =0;
   }
-  if(spelerX > 1280) {
-    spelerX = 1280;
+  if (spelerX > 1230) {
+    spelerX = 1230;
   }
 };
 
