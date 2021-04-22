@@ -114,18 +114,15 @@ var beweegBom = function() {
  * Updatet globale variabelen met positie van eten
  */
 var beweegEten = function() {
-    tekenEten(etenX, etenY);
-    var i = 1; //veranderd de snelheid na bepaald aantal punten
-    etenY += snelheidEten * i;
+    
+    etenY += snelheidEten;
     
     if (etenY > 780) {
         etenX = random(0, 1220);
         etenY = 0;
     }
 
-    if (score + 1) {
-        i += 0.05;
-    }
+
 
     
 };
@@ -136,7 +133,7 @@ var beweegEten = function() {
  * Updatet globale variabele spelerX en spelerY
  */
 var beweegSpeler = function() {
-    tekenVeld();
+
   if (keyIsDown(keyA)) {
       spelerX -= 7;
   }
@@ -169,8 +166,10 @@ var checkSpelerGemist = function() {
  * @returns {boolean} true als speler eten heeft gepakt
  */
 var checkSpelerEtenGepakt = function() {
-    if(spelerX === etenX && spelerY === etenY) {
+    if(abs(spelerX - etenX)<50 && abs(spelerY - etenY)<50) { 
+        //zie https://p5js.org/reference/#/p5/abs
         score += 1;
+        snelheidEten *= 1.05;
     }
   return false;
 };
