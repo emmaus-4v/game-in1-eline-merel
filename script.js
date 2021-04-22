@@ -121,10 +121,6 @@ var beweegEten = function() {
         etenX = random(0, 1220);
         etenY = 0;
     }
-
-
-
-    
 };
 
 
@@ -166,7 +162,7 @@ var checkSpelerGemist = function() {
  * @returns {boolean} true als speler eten heeft gepakt
  */
 var checkSpelerEtenGepakt = function() {
-    if(abs(spelerX - etenX)<50 && abs(spelerY - etenY)<50) { 
+    if(abs(spelerX - etenX) < 10 && abs(spelerY - etenY) < 10) { 
         //zie https://p5js.org/reference/#/p5/abs
         score += 1;
         snelheidEten *= 1.05;
