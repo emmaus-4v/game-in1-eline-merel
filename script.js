@@ -79,7 +79,7 @@ var tekenKruis = function(x, y) {
 };
 
 /**
- * Tekent de eten
+ * Tekent het eten
  * @param {number} etenX x-coördinaat
  * @param {number} etenY y-coördinaat
  */
@@ -162,7 +162,7 @@ var checkSpelerGemist = function() {
  * @returns {boolean} true als speler eten heeft gepakt
  */
 var checkSpelerEtenGepakt = function() {
-    if(abs(spelerX - etenX) < 10 && abs(spelerY - etenY) < 10) { 
+    if(abs((spelerX + 25) - etenX) < 10 && abs(spelerY - etenY) < 10) { 
         //zie https://p5js.org/reference/#/p5/abs
         score += 1;
         snelheidEten *= 1.05;
