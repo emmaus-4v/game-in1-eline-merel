@@ -20,6 +20,7 @@ Basis: uitleg, spelen, afgaan en punten
 - [ ] functie maken voor als je het eten mist
 - [ ] afgaan bij meerdere keren gemist eten (3)
 - [ ] uitlegscherm (op play kunnen klikken)
+- [ ] gameover scherm (opnieuw spelen)
 
 Uitbreiding: 
 - [ ] teken bommen

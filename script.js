@@ -22,8 +22,10 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 const keyA = 65;
 const keyD = 68;
+const ENTER = 13;
+const FRAMERATE = 30;
 
-var spelStatus = SPELEN;
+var spelStatus = UITLEG;
 
 var spelerX = 200; // x-positie van speler
 var spelerY = 680; // y-positie van speler
@@ -131,10 +133,10 @@ var beweegEten = function() {
 var beweegSpeler = function() {
 
   if (keyIsDown(keyA)) {
-      spelerX -= 7;
+      spelerX -= 8;
   }
   if (keyIsDown(keyD)) {
-      spelerX += 7;
+      spelerX += 8;
   }
 
   if (spelerX < 0) {
@@ -162,7 +164,7 @@ var checkSpelerGemist = function() {
  * @returns {boolean} true als speler eten heeft gepakt
  */
 var checkSpelerEtenGepakt = function() {
-    if(abs((spelerX + 25) - etenX) < 10 && abs(spelerY - etenY) < 10) { 
+    if(abs((spelerX + 25) - etenX) < 10 && abs(spelerY - etenY) < 5) { 
         //zie https://p5js.org/reference/#/p5/abs
         score += 1;
         snelheidEten *= 1.05;
@@ -189,6 +191,10 @@ var checkGameOver = function() {
   return false;
 };
 
+var beginGame = function() {
+    tekenVeld();
+    text("Klik op enter om te starten", 360, 630, 500, 500);
+};
 
 /**
  * setup
@@ -202,7 +208,7 @@ function setup() {
   // Kleur de achtergrond blauw, zodat je het kunt zien
   background('blue');
 
-
+  spelStatus === UITLEG;
 }
 
 
@@ -211,6 +217,46 @@ function setup() {
  * de code in deze functie wordt meerdere keren per seconde
  * uitgevoerd door de p5 library, nadat de setup functie klaar is
  */
+function draw() {
+if (spelStatus = UITLEG) {
+    beginGame();
+
+    if (keyIsDown(ENTER)) {
+        spelStatus = SPELEN;
+    }
+}
+
+if (spelStatus = SPELEN) {
+    tekenVeld();
+    tekenEten(etenX, etenY);
+    tekenSpeler(spelerX, spelerY);
+    beweegEten();
+    beweegSpeler();
+    checkSpelerEtenGepakt();
+}
+
+if (spelStatus = GAMEOVER) {
+    
+}
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 function draw() {
   switch (spelStatus) {
     case SPELEN:
@@ -242,3 +288,4 @@ function draw() {
       break;
   }
 }
+*/
