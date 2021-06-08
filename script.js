@@ -23,14 +23,14 @@ const GAMEOVER = 2;
 const keyA = 65;
 const keyD = 68;
 const ENTER = 13;
-const FRAMERATE = 30;
+const SPATIE = 32;
 
 var spelStatus = UITLEG;
 
 var spelerX = 200; // x-positie van speler
 var spelerY = 680; // y-positie van speler
 
-var etenX = 0;    // x-positie van eten
+var etenX = 100;    // x-positie van eten
 var etenY = 0;    // y-positie van eten
 
 var bomX = 0;   // x-positie van vijand
@@ -140,7 +140,7 @@ var beweegSpeler = function() {
   }
 
   if (spelerX < 0) {
-    spelerX =0;
+    spelerX = 0;
   }
   if (spelerX > 1230) {
     spelerX = 1230;
@@ -164,8 +164,7 @@ var checkSpelerGemist = function() {
  * @returns {boolean} true als speler eten heeft gepakt
  */
 var checkSpelerEtenGepakt = function() {
-    if(abs((spelerX + 25) - etenX) < 10 && abs(spelerY - etenY) < 5) { 
-        //zie https://p5js.org/reference/#/p5/abs
+    if(abs((spelerX + 25) - etenX) < 25 && abs(spelerY - etenY) < 5) { 
         score += 1;
         snelheidEten *= 1.05;
     }
@@ -193,7 +192,16 @@ var checkGameOver = function() {
 
 var beginGame = function() {
     tekenVeld();
-    text("Klik op enter om te starten", 360, 630, 500, 500);
+    textSize(70);
+    text("Klik op enter om te starten", 200, 300, 1280, 680);
+};
+
+var eindGame = function() {
+    tekenVeld();
+    textSize(50);
+    text("helaas je bent af", 200, 300, 1280, 680);
+    textSize(70);
+    text("klik op spatie op opnieuw te spelen", 200, 300, 1280, 680);
 };
 
 /**
@@ -218,44 +226,32 @@ function setup() {
  * uitgevoerd door de p5 library, nadat de setup functie klaar is
  */
 function draw() {
-if (spelStatus = UITLEG) {
+    if (spelStatus === UITLEG) {
     beginGame();
 
-    if (keyIsDown(ENTER)) {
+        if (keyIsDown(ENTER)) {
         spelStatus = SPELEN;
-    }
-}
+        }
 
-if (spelStatus = SPELEN) {
+    }
+
+    if (spelStatus === SPELEN) {
     tekenVeld();
     tekenEten(etenX, etenY);
     tekenSpeler(spelerX, spelerY);
     beweegEten();
     beweegSpeler();
     checkSpelerEtenGepakt();
-}
+    }
 
-if (spelStatus = GAMEOVER) {
-    
-}
+    if (spelStatus === GAMEOVER) {
+        eindGame();
 
+        if (keyIsDown(SPATIE)) {
+        spelStatus = SPELEN;
+        }
 
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }}
 /*
 function draw() {
   switch (spelStatus) {
