@@ -33,11 +33,13 @@ var spelerY = 680; // y-positie van speler
 var etenX = 100;    // x-positie van eten
 var etenY = 0;    // y-positie van eten
 
-var bomX = 0;   // x-positie van vijand
-var bomY = 0;   // y-positie van vijand
+var bomX = 0;   // x-positie van bom
+var bomY = 0;   // y-positie van bom
 
 var score = 0; // aantal behaalde punten
-var snelheidEten= 5; //snelheid van het eten
+var snelheidEten = 5; // snelheid van het eten, hoe snel het valt
+
+var levens = 3; // aantal levens dat je hebt
 
 
 
@@ -55,14 +57,15 @@ var tekenVeld = function() {
     rect(0, 540, 1280, 720);
 
     fill('black');
-    textSize(80);
-    text(score, 0, 10, 500, 500);
+    textSize(50);
+    text("Punten: " + score, 20 , 10, 500, 500);
 
-    strokeWeight(5);
+    text("Levens: " + levens, 1030, 10, 500, 500);
+   /* strokeWeight(5);
     color('white');
     tekenKruis(1000, 100);
     tekenKruis(1070, 100);
-    tekenKruis(1140, 100);
+    tekenKruis(1140, 100); */
 };
 
 /**
@@ -74,11 +77,11 @@ var tekenBom = function(x, y) {
     
 
 };
-
+/*
 var tekenKruis = function(x, y) {
     line(x, y, x - 50, y - 50);
     line(x - 50, y, x , y - 50);
-};
+};*/
 
 /**
  * Tekent het eten
@@ -154,8 +157,15 @@ var beweegSpeler = function() {
  * Zoekt uit of de speler heeft gemist
  * @returns {boolean} true als speler heeft gemist
  */
-var checkSpelerGemist = function() {
+var checkSpelerEtenGemist = function() {
+    if((abs((spelerX + 25) - etenX) < 25) === false && abs(spelerY - etenY) < 5 { 
+        levens -= 1;
 
+        if (levens === 0) {
+            spelStatus = GAMEOVER;
+        }
+        
+    }
   return false;
 };
 
@@ -242,6 +252,7 @@ function draw() {
     beweegEten();
     beweegSpeler();
     checkSpelerEtenGepakt();
+    checkSpelerEtenGemist();
     }
 
     if (spelStatus === GAMEOVER) {

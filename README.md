@@ -19,7 +19,7 @@ Basis: uitleg, spelen, afgaan en punten
 - [x] geef punt voor elke gevangen eten met mond open
 - [ ] functie maken voor als je het eten mist
 - [ ] afgaan bij meerdere keren gemist eten (3)
-- [ ] uitlegscherm (op play kunnen klikken)
+- [x] uitlegscherm (op play kunnen klikken)
 - [ ] gameover scherm (opnieuw spelen)
 
 Uitbreiding: 
