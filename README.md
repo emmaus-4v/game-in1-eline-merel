@@ -10,15 +10,14 @@ Basis: uitleg, spelen, afgaan en punten
 - [x] maak index.html, style.css en script.js met canvas
 - [(x)] teken hamburger
 - [x] beweeg hambruger
-- [ ] (open mond hamburger)
 - [x] achtergrond maken
 - [(x)] teken eten
 - [x] beweeg eten
 - [x] maak functie die kijkt of eten bij burger is als mond open is
 - [x] punten op scherm zetten
 - [x] geef punt voor elke gevangen eten met mond open
-- [ ] functie maken voor als je het eten mist
-- [ ] afgaan bij meerdere keren gemist eten (3)
+- [x] functie maken voor als je het eten mist
+- [x] afgaan bij meerdere keren gemist eten (3)
 - [x] uitlegscherm (op play kunnen klikken)
 - [ ] gameover scherm (opnieuw spelen)
 

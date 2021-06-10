@@ -58,14 +58,10 @@ var tekenVeld = function() {
 
     fill('black');
     textSize(50);
-    text("Punten: " + score, 20 , 10, 500, 500);
+    text("Score: " + score, 20 , 10, 500, 500);
 
     text("Levens: " + levens, 1030, 10, 500, 500);
-   /* strokeWeight(5);
-    color('white');
-    tekenKruis(1000, 100);
-    tekenKruis(1070, 100);
-    tekenKruis(1140, 100); */
+ 
 };
 
 /**
@@ -158,7 +154,7 @@ var beweegSpeler = function() {
  * @returns {boolean} true als speler heeft gemist
  */
 var checkSpelerEtenGemist = function() {
-    if((abs((spelerX + 25) - etenX) < 25) === false && abs(spelerY - etenY) < 5 { 
+    if(abs((spelerX + 25) - etenX) > 25 && abs(spelerY - etenY) < 3) { 
         levens -= 1;
 
         if (levens === 0) {
@@ -174,9 +170,9 @@ var checkSpelerEtenGemist = function() {
  * @returns {boolean} true als speler eten heeft gepakt
  */
 var checkSpelerEtenGepakt = function() {
-    if(abs((spelerX + 25) - etenX) < 25 && abs(spelerY - etenY) < 5) { 
+    if(abs((spelerX + 25) - etenX) < 25 && abs(spelerY - etenY) < 3) { 
         score += 1;
-        snelheidEten *= 1.05;
+        snelheidEten *= 1.005;
     }
   return false;
 };
@@ -208,11 +204,13 @@ var beginGame = function() {
 
 var eindGame = function() {
     tekenVeld();
-    textSize(50);
-    text("helaas je bent af", 200, 300, 1280, 680);
-    textSize(70);
-    text("klik op spatie op opnieuw te spelen", 200, 300, 1280, 680);
-};
+    textSize(60);
+    text("Score: " + score, 500, 200, 1280, 680);
+    textSize(60);
+    text("helaas je bent af", 410, 265, 1280, 680);
+    textSize(60);
+    text("klik op spatie op opnieuw te spelen", 200, 330, 1280, 680);
+}
 
 /**
  * setup
@@ -260,6 +258,10 @@ function draw() {
 
         if (keyIsDown(SPATIE)) {
         spelStatus = SPELEN;
+        score = 0
+        levens = 3
+        etenY= 0
+        snelheidEten = 5
         }
 
     }}
