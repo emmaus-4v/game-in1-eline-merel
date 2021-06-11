@@ -33,7 +33,7 @@ var spelerY = 680; // y-positie van speler
 var etenX = 100;    // x-positie van eten
 var etenY = 0;    // y-positie van eten
 
-var bomX = 0;   // x-positie van bom
+var bomX = 400;   // x-positie van bom
 var bomY = 0;   // y-positie van bom
 
 var score = 0; // aantal behaalde punten
@@ -66,18 +66,15 @@ var tekenVeld = function() {
 
 /**
  * Tekent de bom
- * @param {number} x x-coördinaat
- * @param {number} y y-coördinaat
+ * @param {number} bomX x-coördinaat
+ * @param {number} bomY y-coördinaat
  */
-var tekenBom = function(x, y) {
-    
-
+var tekenBom = function(bomX, bomY) {
+    strokeWeight(1);
+    fill("black");
+    ellipse(bomX, bomY, 50, 50);
 };
-/*
-var tekenKruis = function(x, y) {
-    line(x, y, x - 50, y - 50);
-    line(x - 50, y, x , y - 50);
-};*/
+
 
 /**
  * Tekent het eten
@@ -107,7 +104,12 @@ var tekenSpeler = function(spelerX, spelerY) {
  * Updatet globale variabelen met positie van bom
  */
 var beweegBom = function() {
+     bomY += snelheidEten;
     
+    if (bomY > 1200) {
+        bomX = random(0, 1220);
+        bomY = 0;
+    }
 };
 
 
@@ -182,7 +184,9 @@ var checkSpelerEtenGepakt = function() {
  * @returns {boolean} true als speler bom heeft gepakt
  */
 var checkSpelerBomGepakt = function() {
-    
+     if(abs((spelerX + 25) - bomX) < 25 && abs(spelerY - bomY) < 3) { 
+       spelStatus = GAMEOVER;
+    }
   return false;
 };
 
@@ -247,10 +251,13 @@ function draw() {
     tekenVeld();
     tekenEten(etenX, etenY);
     tekenSpeler(spelerX, spelerY);
+    tekenBom(bomX, bomY);
     beweegEten();
+    beweegBom();
     beweegSpeler();
     checkSpelerEtenGepakt();
     checkSpelerEtenGemist();
+    checkSpelerBomGepakt();
     }
 
     if (spelStatus === GAMEOVER) {
@@ -258,10 +265,11 @@ function draw() {
 
         if (keyIsDown(SPATIE)) {
         spelStatus = SPELEN;
-        score = 0
-        levens = 3
-        etenY= 0
-        snelheidEten = 5
+        score = 0;
+        levens = 3;
+        etenY= 0;
+        bomY= 0;
+        snelheidEten = 5;
         }
 
     }}
