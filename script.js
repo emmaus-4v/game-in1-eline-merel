@@ -30,14 +30,14 @@ var spelStatus = UITLEG; // ik wil dat het spel begint met uitleg modus dus staa
 var spelerX = 200; // x-positie van speler
 var spelerY = 680; // y-positie van speler
 
-var etenX = 100;    // x-positie van eten
+var etenX = 150;    // x-positie van eten
 var etenY = 0;    // y-positie van eten
 
 var bomX = 400;   // x-positie van bom
 var bomY = 0;   // y-positie van bom
 
 var score = 0; // aantal behaalde punten
-var snelheidEten = 5; // snelheid van het eten, hoe snel het valt
+var snelheidEten = 6; // snelheid van het eten, hoe snel het valt
 
 var levens = 3; // aantal levens dat je hebt
 
@@ -56,24 +56,28 @@ var tekenVeld = function() {
     rect(0, 0, 1280, 540); // lucht
     fill('lime');
     rect(0, 540, 1280, 720); // gras
+    fill('yellow'); //zon
+    ellipse(100, 140, 100, 100);
 
     fill('black');
     textSize(50);
     text("Score: " + score, 20 , 10, 500, 500); // aantal punten text
-
     text("Levens: " + levens, 1030, 10, 500, 500); // aantal  levens tekst
- 
 };
 
 /**
- * deze funcite tekent de bom
+ * deze functie tekent de bom
  * @param {number} bomX x-coördinaat
  * @param {number} bomY y-coördinaat
  */
 var tekenBom = function(bomX, bomY) {
+    strokeWeight(5);
+    stroke(139 ,101 ,8);
+    line(bomX, bomY, bomX, bomY - 35); // het touwtje op de bom wat de bom laat afgaan als je het aansteekt
     strokeWeight(1);
     fill("black");
-    ellipse(bomX, bomY, 50, 50);
+    stroke('black')
+    ellipse(bomX, bomY, 50, 50); // de bom
 };
 
 
@@ -85,7 +89,7 @@ var tekenBom = function(bomX, bomY) {
 var tekenEten = function(etenX, etenY) {
     strokeWeight(1);
     fill("pink");
-    ellipse(etenX, etenY, 50, 50);
+    ellipse(etenX, etenY, 50, 50); // het eten
 };
 
 
@@ -95,9 +99,14 @@ var tekenEten = function(etenX, etenY) {
  * @param {number} spelerY y-coördinaat
  */
 var tekenSpeler = function(spelerX, spelerY) {
-  strokeWeight(1);
-  fill("white");
-  rect(spelerX, spelerY, 50, 50);
+    strokeWeight(1);
+    fill("white");
+    rect(spelerX, spelerY, 50, 50); // de speler
+    fill('black')
+    ellipse (spelerX + 15, spelerY + 15, 7, 7); // linker oog
+    ellipse (spelerX + 35, spelerY + 15, 7, 7); // rechter oog
+    fill('red');
+    rect(spelerX + 10, spelerY + 25, 30, 10); // open mond om het eten te vangen
 };
 
 
@@ -184,7 +193,7 @@ var checkSpelerEtenGepakt = function() {
  */
 var checkSpelerBomGepakt = function() {
      if(abs((spelerX + 25) - bomX) < 25 && abs(spelerY - bomY) < 3) { // als de x-coördinaat van speler en eten minder 25 verschillen en de y minder 3 verschilt dan heb je de bom geraakt dus meteen af
-       spelStatus = GAMEOVER; // zorgt dat je het eindscherm krijgt
+       spelStatus = GAMEOVER; // zorgt dat je het eindscherm krijgt als je de bom hebt gepakt
     }
   return false;
 };
@@ -192,19 +201,22 @@ var checkSpelerBomGepakt = function() {
 // functie die het veld tekent en dan de start-tekst op het scherm zet in het begin van de game
 var beginGame = function() {
     tekenVeld();
+    textSize(50);
+    text ("Pak al het eten en ontwijk de bommen", 220, 210, 1280, 720);
+    text ("Beweeg met A en D", 400, 275, 1280, 720);
     textSize(70);
-    text("Klik op enter om te starten", 200, 300, 1280, 680);
+    text("Klik op enter om te starten", 240, 330, 1280, 720);
 };
 
 // functie die het veld tekent en dan de afgaan-tekst op het scherm zet als je eenmaal af bent gegaan
 var eindGame = function() {
-    tekenVeld();
+     tekenVeld();
     textSize(60);
     text("Score: " + score, 500, 200, 1280, 680);
     textSize(60);
-    text("helaas je bent af", 410, 265, 1280, 680);
+    text("Helaas je bent af", 410, 265, 1280, 680);
     textSize(60);
-    text("klik op spatie op opnieuw te spelen", 200, 330, 1280, 680);
+    text("Klik op spatie op opnieuw te spelen", 200, 330, 1280, 680);
 }
 
 /**
@@ -238,8 +250,24 @@ function draw() {
 
     }
 
-    if (spelStatus === SPELEN) { // voert alle functies hier uit tijdens het spelen
+   if (spelStatus === SPELEN) { // als je gaat spelen worden al deze functies gebruikt
     tekenVeld();
+    
+    if ((score >= 10 && score < 20) || (score >= 30 && score < 40) ||(score >= 50 && score < 60) || (score >= 70 && score < 800)) { // om de 10 punten wordt het dag en nacht, dit zorgt voor een wat minder saai game omdat het nu niet steeds hetzelfde is
+      strokeWeight(1);
+      fill(25, 25, 112);
+      rect(0, 0, 1280, 540); // donkere lucht (nacht)
+      fill('lime');
+      rect(0, 540, 1280, 720); // gras
+      fill(211, 211, 211);
+      ellipse(300, 100, 100, 100); // maan
+
+      fill('white'); // nu is de tekst wit omdat je de zwarte tekst niet goed ziet op de donker blauwe lucht
+      textSize(50);
+      text("Score: " + score, 20 , 10, 500, 500);
+      text("Levens: " + levens, 1030, 10, 500, 500);
+    }
+    // de rest van de functies die nodig zijn tijdens het spelen
     tekenEten(etenX, etenY);
     tekenSpeler(spelerX, spelerY);
     tekenBom(bomX, bomY);
@@ -256,12 +284,12 @@ function draw() {
 
         if (keyIsDown(SPATIE)) {
         spelStatus = SPELEN; // zorgt dat als je op spatie drukt je opnieuw speelt
-        // deze bepaalde variabele worden gereset als je opnieuw gaat spelen zodat je niet doorgaat met je oude punten en dat de bom en het eten weer bovenaan beginnen met de goede snel
+        // deze bepaalde variabele worden gereset als je opnieuw gaat spelen zodat je niet doorgaat met je oude punten en dat de bom en het eten weer bovenaan beginnen met de goede snelheid
         score = 0;
         levens = 3;
         etenY= 0;
         bomY= 0;
-        snelheidEten = 5;
+        snelheidEten = 6;
         }
 
     }}

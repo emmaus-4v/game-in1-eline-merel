@@ -19,16 +19,15 @@ Basis: uitleg, spelen, afgaan en punten
 - [x] functie maken voor als je het eten mist
 - [x] afgaan bij meerdere keren gemist eten (3)
 - [x] uitlegscherm (op play kunnen klikken)
-- [ ] gameover scherm (opnieuw spelen)
+- [x] gameover scherm (opnieuw spelen)
 
 Uitbreiding: 
-- [ ] teken bommen
-- [ ] beweeg bommen
-- [ ] af gaan als je bom oppakt
+- [x] teken bommen
+- [x] beweeg bommen
+- [x] af gaan als je bom oppakt
 
 Uitbreiding: *bedenk iets, bijvoorbeeld bewegende achtergrond*
-- [ ] andere thema's
-- [ ] *later uitwerken*
+- [x] andere thema's (soort van gelukt want nu krijg je om de 10 punten dag en nacht achtergrond)
 
 ## Credits
 - Game template van het Emmauscollege Rotterdam https://github.com/emmauscollege/4HV-game-template
