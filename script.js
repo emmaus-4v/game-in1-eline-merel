@@ -5,7 +5,6 @@
 /* Game opdracht
    Informatica - Emmauscollege Rotterdam
    Template voor een game in JavaScript met de p5 library
-
    Begin met dit template voor je game opdracht,
    voeg er je eigen code aan toe.
  */
@@ -25,7 +24,7 @@ const keyD = 68; // nummer van D op toetsenbord
 const ENTER = 13; // nummer van Enter op toetsenbord 
 const SPATIE = 32; // nummer van Spatie op toetsenbord 
 
-var spelStatus = UITLEG; // ik wil dat het spel begint met uitleg modus dus staat deze van te voren op uitleg
+var spelStatus = UITLEG; // ik wil dat het spel begint met uitleg modus dus staat deze van te voren op UITLEG
 
 var spelerX = 200; // x-positie van speler
 var spelerY = 680; // y-positie van speler
@@ -53,17 +52,33 @@ var levens = 3; // aantal levens dat je hebt
 var tekenVeld = function() {
     strokeWeight(1);
     fill('lightblue');
-    rect(0, 0, 1280, 540); // lucht
+    rect(0, 0, 1280, 540); // heldere lucht (dag)
     fill('lime');
     rect(0, 540, 1280, 720); // gras
-    fill('yellow'); //zon
-    ellipse(100, 140, 100, 100);
+    fill('yellow'); 
+    ellipse(100, 140, 100, 100); //  zon
 
     fill('black');
     textSize(50);
     text("Score: " + score, 20 , 10, 500, 500); // aantal punten text
     text("Levens: " + levens, 1030, 10, 500, 500); // aantal  levens tekst
 };
+
+// dit is hetzelfde als de originele tekenVeld alleen is het hier nacht met een maan
+var tekenVeldNacht = function() {
+    strokeWeight(1);
+    fill(25, 25, 112);
+    rect(0, 0, 1280, 540); // donkere lucht (nacht)
+    fill('lime');
+    rect(0, 540, 1280, 720); // gras
+    fill(211, 211, 211);
+    ellipse(300, 100, 100, 100); // maan
+
+    fill('white'); // nu is de tekst wit omdat je de zwarte tekst niet goed ziet op de donker blauwe lucht
+    textSize(50);
+    text("Score: " + score, 20 , 10, 500, 500);
+    text("Levens: " + levens, 1030, 10, 500, 500);
+}
 
 /**
  * deze functie tekent de bom
@@ -106,11 +121,11 @@ var tekenSpeler = function(spelerX, spelerY) {
     ellipse (spelerX + 15, spelerY + 15, 7, 7); // linker oog
     ellipse (spelerX + 35, spelerY + 15, 7, 7); // rechter oog
     fill('red');
-    rect(spelerX + 10, spelerY + 25, 30, 10); // open mond om het eten te vangen
+    rect(spelerX + 10, spelerY + 25, 30, 10); // geopende mond om het eten te vangen
 };
 
 
-
+// deze functie beweegt de bom die naar beneden valt 
 var beweegBom = function() {
      bomY += snelheidEten; // zorgt ervoor dat de snelheid omhoog gaat (zie checkSpelerEtenGepakt)
     
@@ -121,11 +136,8 @@ var beweegBom = function() {
 };
 
 
-/**
- * Updatet globale variabelen met positie van eten
- */
+// deze functie beweegt het eten dat naar beneden valt
 var beweegEten = function() {
-    
     etenY += snelheidEten;
     
     if (etenY > 780) {            // zorgt dat als het eten y-coördinaat langs de 780 gaat hij weer bij y=0 gaat zodat hij meteen terug komt als je hem hebt gepakt
@@ -135,10 +147,7 @@ var beweegEten = function() {
 };
 
 
-/**
- * Kijkt wat de toetsen/muis etc zijn.
- * Updatet globale variabele spelerX en spelerY
- */
+// deze functie laat de speler bewegen met A en D
 var beweegSpeler = function() {
 
   if (keyIsDown(keyA)) {
@@ -149,10 +158,10 @@ var beweegSpeler = function() {
   }
 
   if (spelerX < 0) {
-    spelerX = 0;         //zorgt ervoor dat de speler links niet van het scherm af loopt dus de x-coördinaat blijft altijd 0 of hoger
+      spelerX = 0;         //zorgt ervoor dat de speler links niet van het scherm af loopt dus de x-coördinaat blijft altijd 0 of hoger
   }
   if (spelerX > 1230) {
-    spelerX = 1230;     //zorgt ervoor dat de speler rechts niet van het scherm af loopt dus de x-coördinaat blijft altijd 1230 of lager, ik doe 1230 omdat de speler 50 pixels breed is en de canvas 1280
+      spelerX = 1230;     //zorgt ervoor dat de speler rechts niet van het scherm af loopt dus de x-coördinaat blijft altijd 1230 of lager, ik doe 1230 omdat de speler 50 pixels breed is en de canvas 1280
   }
 };
 
@@ -242,54 +251,43 @@ function setup() {
  */
 function draw() {
     if (spelStatus === UITLEG) {
-    beginGame(); // voert begin game uit zodat de tekst met starten op het beeld staat
+    beginGame(); // voert beginGame uit zodat de tekst met starten op het beeld staat
 
         if (keyIsDown(ENTER)) {
-        spelStatus = SPELEN; // je moet op enter klikken dus als dat gebeurt dan ga je beginnen met spelen
+        spelStatus = SPELEN; // je moet op enter klikken dus als je dat doet dan ga je beginnen met spelen
         }
 
     }
 
    if (spelStatus === SPELEN) { // als je gaat spelen worden al deze functies gebruikt
-    tekenVeld();
+        tekenVeld();
     
-    if ((score >= 10 && score < 20) || (score >= 30 && score < 40) ||(score >= 50 && score < 60) || (score >= 70 && score < 800)) { // om de 10 punten wordt het dag en nacht, dit zorgt voor een wat minder saai game omdat het nu niet steeds hetzelfde is
-      strokeWeight(1);
-      fill(25, 25, 112);
-      rect(0, 0, 1280, 540); // donkere lucht (nacht)
-      fill('lime');
-      rect(0, 540, 1280, 720); // gras
-      fill(211, 211, 211);
-      ellipse(300, 100, 100, 100); // maan
-
-      fill('white'); // nu is de tekst wit omdat je de zwarte tekst niet goed ziet op de donker blauwe lucht
-      textSize(50);
-      text("Score: " + score, 20 , 10, 500, 500);
-      text("Levens: " + levens, 1030, 10, 500, 500);
-    }
-    // de rest van de functies die nodig zijn tijdens het spelen
-    tekenEten(etenX, etenY);
-    tekenSpeler(spelerX, spelerY);
-    tekenBom(bomX, bomY);
-    beweegEten();
-    beweegBom();
-    beweegSpeler();
-    checkSpelerEtenGepakt();
-    checkSpelerEtenGemist();
-    checkSpelerBomGepakt();
+        if ((score >= 10 && score < 20) || (score >= 30 && score < 40) ||(score >= 50 && score < 60) || (score >= 70 && score < 800)) { // om de 10 punten wordt het dag en nacht, dit zorgt voor een wat minder saaie game omdat het nu niet steeds hetzelfde is
+            tekenVeldNacht(); //maakt het veld maar dan de nacht versie
+        }
+        // de rest van de functies die nodig zijn tijdens het spelen
+        tekenEten(etenX, etenY);
+        tekenSpeler(spelerX, spelerY);
+        tekenBom(bomX, bomY);
+        beweegEten();
+        beweegBom();
+        beweegSpeler();
+        checkSpelerEtenGepakt();
+        checkSpelerEtenGemist();
+        checkSpelerBomGepakt();
     }
 
     if (spelStatus === GAMEOVER) {
         eindGame(); // als je gameover bent voert hij de eindgame uit met de tekst met je punten enz.
 
         if (keyIsDown(SPATIE)) {
-        spelStatus = SPELEN; // zorgt dat als je op spatie drukt je opnieuw speelt
-        // deze bepaalde variabele worden gereset als je opnieuw gaat spelen zodat je niet doorgaat met je oude punten en dat de bom en het eten weer bovenaan beginnen met de goede snelheid
-        score = 0;
-        levens = 3;
-        etenY= 0;
-        bomY= 0;
-        snelheidEten = 6;
+            spelStatus = SPELEN; // zorgt dat als je op spatie drukt je opnieuw speelt
+            // deze bepaalde variabele worden gereset als je opnieuw gaat spelen zodat je niet doorgaat met je oude punten en dat de bom en het eten weer bovenaan beginnen met de goede snelheid
+            score = 0;
+            levens = 3;
+            etenY= 0;
+            bomY= 0;
+            snelheidEten = 6;
         }
 
     }}
