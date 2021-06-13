@@ -2,16 +2,16 @@ Deze game is gebaseerd op het template voor 4HV van het Emmauscollege Rotterdam
 
 ## Mijn spel: Falling Food!
 Gemaakt door:
-- Eline van de Weg uit 4VE (720 bij 1280)
+- Eline van de Weg uit 4VE 
 
 ## Mijn planning
 
 Basis: uitleg, spelen, afgaan en punten
 - [x] maak index.html, style.css en script.js met canvas
-- [(x)] teken hamburger
+- [x] teken hamburger
 - [x] beweeg hambruger
 - [x] achtergrond maken
-- [(x)] teken eten
+- [x] teken eten
 - [x] beweeg eten
 - [x] maak functie die kijkt of eten bij burger is als mond open is
 - [x] punten op scherm zetten

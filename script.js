@@ -78,7 +78,7 @@ var tekenVeldNacht = function() {
     textSize(50);
     text("Score: " + score, 20 , 10, 500, 500);
     text("Levens: " + levens, 1030, 10, 500, 500);
-}
+};
 
 /**
  * deze functie tekent de bom
@@ -130,7 +130,7 @@ var beweegBom = function() {
      bomY += snelheidEten; // zorgt ervoor dat de snelheid omhoog gaat (zie checkSpelerEtenGepakt)
     
     if (bomY > 1200) {            // zorgt dat als de bom y-coördinaat langs de 1200 gaat hij weer bij y=0 gaat zodat hij opnieuw terug komt
-        bomX = random(0, 1220);   // zorgt dat de x-coördinaat steeds random is, dit maakt het spel leuker en niet te voorspellen
+        bomX = random(0, 1280);   // zorgt dat de x-coördinaat steeds random is, dit maakt het spel leuker en niet te voorspellen
         bomY = 0;
     }
 };
@@ -141,7 +141,7 @@ var beweegEten = function() {
     etenY += snelheidEten;
     
     if (etenY > 780) {            // zorgt dat als het eten y-coördinaat langs de 780 gaat hij weer bij y=0 gaat zodat hij meteen terug komt als je hem hebt gepakt
-        etenX = random(0, 1220);  // zorgt dat de x-coördinaat steeds random is, dit maakt het spel leuker en niet te voorspellen
+        etenX = random(0, 1280);  // zorgt dat de x-coördinaat steeds random is, dit maakt het spel leuker en niet te voorspellen
         etenY = 0;
     }
 };
@@ -290,4 +290,4 @@ function draw() {
             snelheidEten = 6;
         }
 
-    }}
+    }};
